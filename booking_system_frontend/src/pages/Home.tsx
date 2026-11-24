@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/common';
 import { Rocket, Globe, Shield, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const Home = () => {
+  const navigate = useNavigate();
   const features = [
     {
       icon: <Rocket size={32} />,
@@ -66,11 +67,9 @@ export const Home = () => {
           transition={{ delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Link to="/flights">
-            <Button size="lg" className="w-full sm:w-auto">
-              Explore Flights
-            </Button>
-          </Link>
+          <Button size="lg" className="w-full sm:w-auto" onClick={() => navigate('/flights')}>
+            Explore Flights
+          </Button>
           <Button variant="secondary" size="lg" className="w-full sm:w-auto">
             Learn More
           </Button>
@@ -124,11 +123,9 @@ export const Home = () => {
           Join thousands of space travelers who have already booked their
           journey to the stars. Your adventure awaits!
         </p>
-        <Link to="/flights">
-          <Button variant="secondary" size="lg">
-            Book Your Flight Now
-          </Button>
-        </Link>
+        <Button variant="secondary" size="lg" onClick={() => navigate('/flights')}>
+          Book Your Flight Now
+        </Button>
       </motion.section>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Rocket, User, LogOut } from 'lucide-react';
 import { useUser } from '../../hooks/useUser';
 import { Button } from '../common';
@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 
 export const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { user, logout } = useUser();
 
   const isActive = (path: string) => location.pathname === path;
@@ -82,9 +83,7 @@ export const Header = () => {
                 </Button>
               </div>
             ) : (
-              <Link to="/flights">
-                <Button size="sm">Book a Flight</Button>
-              </Link>
+              <Button size="sm" onClick={() => navigate('/flights')}>Book a Flight</Button>
             )}
           </div>
         </div>
